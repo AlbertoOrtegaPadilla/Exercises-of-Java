@@ -1,6 +1,6 @@
 /**
 *
-*Ejercicio4 Muestro Horari pprimer año DAW
+*Ejercicio4 Muestro Horario primer año DAW
 * 
 *@author Alberto Ortega Padilla
 * 
