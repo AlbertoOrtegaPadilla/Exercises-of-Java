@@ -1,0 +1,24 @@
+/**
+* Coloreado de texto
+* 
+* Muestra de varias palabras con colores
+* 
+* @autor Alberto O. Padilla
+*/
+
+public class Colores {
+  public static void main(String[] arg) {
+    
+    String rojo = "\003[31m";
+    String verde = "\003[32m";
+    String naranja = "\033[33m";
+    String azul = "\033[34m";
+    String morado = "\033[35m";
+    String blanco = "\033[37m";
+    
+    System.out.print(naranja + "mandarina" + verde + "hierba");
+    System.out.print(naranja + "saltamontes" + rojo + "tomate");
+    System.out.print(blanco + "sabanas" + azul + "cielo");
+    System.out.print(morado + "nazareno" + azul + "mar");
+  }
+}
