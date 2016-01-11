@@ -15,9 +15,11 @@
       int pos=0;
       int num;
       
+      System.out.println(" ");
+      
      for (int i=0; i<10; i++){
        
-       System.out.print("\n ");
+       System.out.print(" ");
        
           num=Integer.parseInt(System.console().readLine());
 
