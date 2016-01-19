@@ -1,7 +1,7 @@
 /**
  * 
  * Ejercicio5 10 números por teclado y que luego muestre los números
- * introducidos junto con las palabras “máximo” y “mínimo” al lado del máximo y del mínimo
+ * introducidos junto con las palabras máximo y mínimo al lado del máximo y del mínimo
  * respectivamente.
  * 
  * @author ALberto Ortega Padilla
@@ -27,7 +27,7 @@
        
        if(numero[i] > maximo){
          
-         maximo = numero[i];
+         maximo = numero[i]
         }
        
        if(numero[i] < minimo){
