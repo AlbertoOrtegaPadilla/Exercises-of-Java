@@ -1,8 +1,8 @@
 /**
  * 
- * Ejercicio2 20 números enteros. Estos números se deben introducir en
- * un array de 4 filas por 5 columnas. El programa mostrará las sumas parciales de filas y
- * columnas igual que si de una hoja de cálculo se tratara. La suma total debe aparecer en la
+ * Ejercicio2 20 numeros enteros. Estos numeros se deben introducir en
+ * un array de 4 filas por 5 columnas. El programa mostrara las sumas parciales de filas y
+ * columnas igual que si de una hoja de calculo se tratara. La suma total debe aparecer en la
  * esquina inferior derecha.
  * 
  * @author Alberto Ortega Padilla
@@ -20,22 +20,22 @@ public class Ejercicio2{
       int sumTotal =0;
       
       
-      for(fila = 0; fila < n.length; fila++){
+      for(fila = 0; fila <4; fila++){
       
-        for(columna = 0; columna < n[fila].length; columna++){
+        for(columna = 0; columna < 5; columna++){
           
           n[fila][columna] = Integer.parseInt(System.console().readLine());  
           
         }
       }
       
-      for(fila = 0; fila < n.length; fila++){
+      for(fila = 0; fila < 4; fila++){
         
          System.out.println();
          
          sumFila = 0;
       
-        for(columna = 0; columna < n[fila].length; columna++){
+        for(columna = 0; columna < 5; columna++){
           
           System.out.printf("%6d ", n[fila][columna]);
           

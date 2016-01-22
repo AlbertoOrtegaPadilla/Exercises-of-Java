@@ -12,7 +12,6 @@
    public static void main(String[] args){
      
      int[][] n = new int[3][6]; // array de 3 filas por 6 columnas
-     int i;
      
      n[0][0]=0;
      n[0][1]=30;
