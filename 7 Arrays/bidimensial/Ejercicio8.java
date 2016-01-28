@@ -1,9 +1,9 @@
 /**
  * 
- * Ejercicio 8 Escribe un programa que, dada una posición en un tablero de ajedrez, nos diga a qué casillas
- * podría saltar un alfil que se encuentra en esa posición. Como se indica en la figura, el alfil
+ * Ejercicio 8 Escribe un programa que, dada una posicion en un tablero de ajedrez, nos diga a que casillas
+ * podria saltar un alfil que se encuentra en esa posicion. Como se indica en la figura, el alfil
  * se mueve siempre en diagonal. El tablero cuenta con 64 casillas. Las columnas se indican
- * con las letras de la “a” a la “h” y las filas se indican del 1 al 8.
+ * con las letras de la a a la h y las filas se indican del 1 al 8.
  * 
  * @author Alberto Ortega Padilla
  * 
@@ -11,21 +11,110 @@
 
 
 public class Ejercicio8 {
-	
+      // se definen constantes para representar el
+      // contenido de las celdas
+      static final String RESET = "\033[0m";
+      static final String INVERSO = "\033[7m";
+      static final String BLANCA = "  ";
+      static final String NEGRA = INVERSO + BLANCA + RESET;
+      static final String ALFIL = "0 ";  //
+      static final String MOVIMIENTOBLANCO = "• "; // 
+      //static final String MOVIMIENTONEGRO 
+      static final String MOVIMIENTONEGRO = INVERSO + MOVIMIENTOBLANCO + RESET;
+
 	public static void main (String args[]) {
     
-    int[][] tablero = new int[8][8];
-    int fila;
-    String columna;
-    
-    
-      
-      System.out.print("Coordenada x: ");
-      x = Integer.parseInt(System.console().readLine());
-      System.out.print("Coordenada y: ");
-      y = Integer.parseInt(System.console().readLine());
-      
-		
+        String[][] tablero = new String[9][9]; //un tablero de ajedrez consta del 1 al 8, y el bidemensional empieza desde el 0, asi que le añadimos 1 mas y no contamos el 0.
+        String posicionAlfil;
+        int fila;
+        int filaAlfil;
+        int columna;
+        int columnaAlfil;
+        String casilla;
+
+            System.out.println("  ░░░░░░░░░░░░░░░░░░░░");
+            
+        casilla= BLANCA;
+
+        for (fila = 1; fila < 9; fila++ ) {
+
+            System.out.print( fila + " ░░");
+
+          for(columna = 1; columna < 9; columna++) {
+
+                if ((fila % 2) == 1) { // fila impar
+
+                  if ((columna % 2) == 1) { // columna impar
+
+                        casilla = BLANCA;
+
+                  } else { // columna par
+
+                            casilla = NEGRA;
+                        }
+
+                } else { // fila par
+
+                      if ((columna % 2) == 1) { // columna impar
+
+                            casilla = NEGRA;
+
+                        } else { // columna par
+
+                                casilla = BLANCA;
+                            }
+                  }
+              System.out.print(casilla);
+              
+              tablero[fila][columna] = casilla;
+          }
+        
+          System.out.println("░░");
+        }
+        
+          System.out.println("  ░░░░░░░░░░░░░░░░░░░░");
+          System.out.println("     a b c d e f g h");
+
+        
+        System.out.print("\n Introduzca la posición del alfil: ");
+
+        posicionAlfil = System.console().readLine();
+
+        columnaAlfil = (int)(posicionAlfil.charAt(0)) - 96;
+
+        filaAlfil = (int)(posicionAlfil.charAt(1)) - 48;
+        
+        System.out.println(posicionAlfil.charAt(0));
+        System.out.println(columnaAlfil);
+        System.out.println(filaAlfil); 
+        
+          if ((((filaAlfil % 2) + (columnaAlfil % 2)) % 2) == 0) {
+            tablero[filaAlfil][columnaAlfil] = ALFIL;
+          } else {
+            tablero[filaAlfil][columnaAlfil] = INVERSO + ALFIL + RESET;
+          }
+          
+        
+            
+      // pinta el tablero con el alfil y las posiciones hacia donde puede moverse
+      System.out.println("  ░░░░░░░░░░░░░░░░░░░░");
+      for(fila = 8; fila >= 1; fila--) {
+        System.out.print( fila + " ░░");
+        for(columna = 1; columna <= 8; columna++) {
+          if ((Math.abs(filaAlfil - fila) == Math.abs(columnaAlfil - columna))
+                && (! ((filaAlfil == fila) && (columnaAlfil == columna)))) {
+            if (tablero[fila][columna] == BLANCA) {
+              tablero[fila][columna] = MOVIMIENTOBLANCO;
+            } else {
+              tablero[fila][columna] = MOVIMIENTONEGRO;
+            }
+          }
+          System.out.print(tablero[fila][columna]);
+        }
+        System.out.println("░░");
+      }
+      System.out.println("  ░░░░░░░░░░░░░░░░░░░░");
+      System.out.println("     a b c d e f g h");
 	}
 }
 

@@ -7,7 +7,7 @@
  */
 
 
-public class Ejercicio7 {
+public class Ejercicio701 {
 	
   // se definen constantes para representar el
   // contenido de las celdas
@@ -83,8 +83,12 @@ public class Ejercicio7 {
       switch(cuadrante[x][y]) {
         case VACIO:
           cuadrante[x][y] = INTENTO;
-          if (((x == minaX) || (x == minaX + 1) || (x == minaX -1)) && ((y == minaY) || (y == minaY -1) || (y == minaY + 1))) {
+
+          
+          if (((Math.abs(x - minaX) == 1) && (Math.abs(y - minaY) == 1)) || ((Math.abs(x - minaX) == 0) && (Math.abs(y - minaY) == 1)) || ((Math.abs(x - minaX) == 1) && (Math.abs(y - minaY) == 0))) {
+            
               System.out.println("¡Cuidado! ¡Hay una mina cerca!");
+            
           }
           break;
         case MINA:
