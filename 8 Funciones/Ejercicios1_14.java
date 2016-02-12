@@ -14,12 +14,19 @@ public class Ejercicios1_14 {
 	
 	public static void main (String args[]) {
     
+    int num;
+    int elevado; // numero para elevar la potencia
+    int resultado; // potencia
+    int contador = 0; // Numero de digitos
+    int numInv = 0; // numero invertido
+    
     
     System.out.print("\n\n Introduce un numero: ");
     
     
     
-    int num= Integer.parseInt(System.console().readLine());
+    num= Integer.parseInt(System.console().readLine());
+    
     
     System.out.print("\n ------¿CAPICUA?------ \n");
     
@@ -59,10 +66,30 @@ public class Ejercicios1_14 {
     
     System.out.print("\n ------¿POTENCIA?------ \n");
     
-    int elevado= Integer.parseInt(System.console().readLine());
+    System.out.print("\n\n Introduce una Potencia: ");
+    elevado= Integer.parseInt(System.console().readLine());
     
-		System.out.println("\n          ■ La potencia de " + num + " elevado a " + elevado + " es " + matematicas.Varias.laPotencia(num));
+    resultado=0;
+    
+		System.out.println("\n          ■ La potencia de " + num + " elevado a " + elevado + " es: " + matematicas.Varias.laPotencia(num, elevado, resultado));
     System.out.println();
+     
+    
+    
+    System.out.print("\n ------¿NUMERO DE DIGITOS?------ \n");
+    
+		System.out.println("\n          ■ El numero de digitos es: " + matematicas.Varias.cuentaDigitos(num, contador));
+    System.out.println();
+    
+    
+    
+    System.out.print("\n ------¿NUMERO DE DIGITOS?------ \n");
+    
+		System.out.println("\n          ■ El numero: " + num + " invertido es: " + matematicas.Varias.volteaNumero(num, numInv));
+    System.out.println();
+    
+    
+    
 	}
 }
 

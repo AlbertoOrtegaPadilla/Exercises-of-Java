@@ -40,11 +40,11 @@ package matematicas;
 
           if(numeroInvertido==num){ // Si el numero inicial y numeroInvertido son iguales: 
 
-              return true; // Devolvera true porque SI que es capicua 
+              return true; // Devolvera true porque SI es capicua 
 
           }else // Si no: 
 
-              return false; // Devolvera false porque NO que es capicua 
+              return false; // Devolvera false porque NO es capicua 
 
       }
       
@@ -56,7 +56,7 @@ package matematicas;
       * 
       */
       
-      public static boolean esPrimo(int num) { // Metodo para devolver True / False y saber si es capicua o no
+      public static boolean esPrimo(int num) { // Metodo para devolver True / False y saber si es primo o no
       
         int aux; // Variable 
         
@@ -66,11 +66,11 @@ package matematicas;
 
           if(aux==0) { // Sin auxiliar es = a 0 return false, si no es asi, es true.
             
-            return false;
+            return false; // Devolvera false porque NO es primo 
           }
         }
         
-        return true;
+        return true; // Devolvera true porque SI es primo 
 
       } 
       
@@ -82,11 +82,11 @@ package matematicas;
        * 
        */
       
-      public static int siguientePrimo(int num) {
+      public static int siguientePrimo(int num) { // Metodo int para devolver un valor, en este caso el siguiente numero primo
         
-        while (!esPrimo(++num));
+        while (!esPrimo(++num)); // Comprueba con la funcion de esPrimo si es primo, si no lo es, se repite sumandole 1, hasta que el numero sea primo
 
-          return num;
+          return num; // Devolvera el siguiente numero primo 
         
         
       }
@@ -98,12 +98,60 @@ package matematicas;
        * 
        */
       
-      public static int laPotencia(int num, int elevado) {
+      public static int laPotencia(int num, int elevado, int resultado) { // Metodo int para devolver un valor, en este caso la potencia
         
         
-
-          return num;
+        resultado = (int) Math.pow(num, elevado); // Calcula la potencia
         
+        
+        return resultado; // Devolvera la potencia
+        
+      }
+     
+     
+      /**
+       * 
+       *  Cuenta el número de dígitos de un número entero.
+       * 
+       */
+      
+      public static int cuentaDigitos(int num, int contador) { // Metodo int para devolver un valor, en este caso el numero de digitos
+        
+        
+        while(num>0){ // Siempre que el numero sea mayor que 0 se repite 
+          
+          num = num/10; // Resta un digito
+          
+          contador++; // Suma en en el contador por digito restado del numero original
+        }
+        
+      return contador; // Devolvera un valor al contador equivalente al numero de digitos que tiene num
+      
+      }
+      
+      
+       /**
+       * 
+       *  Le da la vuelta a un número.
+       * 
+       */
+      
+      public static int volteaNumero(int num, int numInv) { // Metodo int para devolver un valor, en este caso el num volteado
+        
+        int divEntera = num;
+        int restoDiv = 0;
+        
+        while (divEntera != 0) { // Siempre que el numero divEntera no sera igual a 0 se repetira 
+          
+          restoDiv = divEntera % 10; // Aqui entra el numero quitado de la div entera para introducirlo en numInv
+          
+          divEntera = divEntera / 10; // Se le quita digito de derecha ha izquierda
+          
+          numInv = numInv * 10 + restoDiv; // Se introduce los digitos quitados de derecha a izquierda, pero ahora de izquierda a derecha se van introduciendo
+        }
+        
+        return numInv; // Devolvera un valor al numInv que equivale al numero invertido de num
+      
       }
       
   }
