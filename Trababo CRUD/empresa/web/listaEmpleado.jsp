@@ -1,3 +1,4 @@
+<%@page import="java.util.HashMap"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.DriverManager"%>
@@ -27,9 +28,13 @@
                       Class.forName("com.mysql.jdbc.Driver");
                       Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/empresa","root", "");
                       Statement s = conexion.createStatement();
-
-                      ResultSet listado = s.executeQuery ("SELECT empleado.*, departamento.nombre nomdep FROM empleado LEFT JOIN departamento on empleado.codigoDepartamento = departamento.codigo");
-                    %>
+                      ResultSet listado2 = s.executeQuery ("SELECT codigo, nombre FROM departamento");
+                      
+                
+                    
+                     
+                     
+                %>
 
                     <table class="table table-striped">
                         
@@ -39,8 +44,7 @@
                             <th>Edad</th>
                             <th>Salario</th>
                             <th>Comisión</th>
-                            <th>Codigo departamento</th>
-                            <th>Nombre departamento</th></tr>                       
+                            <th>Departamento</th></tr>                       
                         
                         <form method="get" action="añadeEmpleado.jsp">
                             
@@ -50,13 +54,26 @@
                               <td><input type="text" class="form-control" name="edad" size="5"></td>
                               <td><input type="text" class="form-control" name="salario" size="15"></td>
                               <td><input type="text" class="form-control" name="comision" size="15"></td>
-                              <td><input type="text" class="form-control" name="codigoDepartamento" size="5"></td>
+                              <td><select name="codigoDepartamento" class="btn btn-default">
+                                      <%  
+                                        while (listado2.next()) {
+                                      %>
+                                  <option value="<%=listado2.getString("codigo")%>"><%=listado2.getString("nombre")%>                                         
+             
+                                      <%
+                                      }
+                                      %>
+                                  </select></td>
+                              
+                        
                               <td size="5"></td>
                               <td><button type="submit" value="Añadir" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Añadir</button></td><td></td></tr>           
                         </form>
                        
 
                         <%
+                          ResultSet listado = s.executeQuery ("SELECT empleado.*, departamento.nombre nomdep FROM empleado LEFT JOIN departamento on empleado.codigoDepartamento = departamento.codigo");
+
                           while (listado.next()) {
                             out.println("<tr><td>");
                             out.println(listado.getString("codigo") + "</td>");
@@ -65,7 +82,6 @@
                             out.println("<td>" + listado.getString("edad") + "</td>");
                             out.println("<td>" + listado.getString("salario") + "</td>");
                             out.println("<td>" + listado.getString("comision") + "</td>");
-                            out.println("<td>" + listado.getString("codigoDepartamento") + "</td>");
                             out.println("<td>" + listado.getString("nomDep") + "</td>");
                             
                             

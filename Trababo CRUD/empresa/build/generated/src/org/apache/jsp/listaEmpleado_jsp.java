@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.util.HashMap;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.DriverManager;
@@ -51,6 +52,7 @@ public final class listaEmpleado_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -75,9 +77,13 @@ public final class listaEmpleado_jsp extends org.apache.jasper.runtime.HttpJspBa
                       Class.forName("com.mysql.jdbc.Driver");
                       Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/empresa","root", "");
                       Statement s = conexion.createStatement();
-
-                      ResultSet listado = s.executeQuery ("SELECT empleado.*, departamento.nombre nomdep FROM empleado LEFT JOIN departamento on empleado.codigoDepartamento = departamento.codigo");
+                      ResultSet listado2 = s.executeQuery ("SELECT codigo, nombre FROM departamento");
+                      
+                
                     
+                     
+                     
+                
       out.write("\n");
       out.write("\n");
       out.write("                    <table class=\"table table-striped\">\n");
@@ -99,13 +105,35 @@ public final class listaEmpleado_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("                              <td><input type=\"text\" class=\"form-control\" name=\"edad\" size=\"5\"></td>\n");
       out.write("                              <td><input type=\"text\" class=\"form-control\" name=\"salario\" size=\"15\"></td>\n");
       out.write("                              <td><input type=\"text\" class=\"form-control\" name=\"comision\" size=\"15\"></td>\n");
-      out.write("                              <td><input type=\"text\" class=\"form-control\" name=\"codigoDepartamento\" size=\"5\"></td>\n");
+      out.write("                              <td><select>\n");
+      out.write("                                      ");
+  
+                                        while (listado2.next()) {
+                                      
+      out.write("\n");
+      out.write("                                  <option value=\"");
+      out.print(listado2.getString("codigo"));
+      out.write('"');
+      out.write('>');
+      out.print(listado2.getString("nombre"));
+      out.write("                                         \n");
+      out.write("             \n");
+      out.write("                                      ");
+
+                                      }
+                                      
+      out.write("\n");
+      out.write("                                  </select></td>\n");
+      out.write("                              \n");
+      out.write("                        \n");
       out.write("                              <td size=\"5\"></td>\n");
       out.write("                              <td><button type=\"submit\" value=\"Añadir\" class=\"btn btn-default\"><span class=\"glyphicon glyphicon-plus\"></span> Añadir</button></td><td></td></tr>           \n");
       out.write("                        </form>\n");
       out.write("                       \n");
       out.write("\n");
       out.write("                        ");
+
+                          ResultSet listado = s.executeQuery ("SELECT empleado.*, departamento.nombre nomdep FROM empleado LEFT JOIN departamento on empleado.codigoDepartamento = departamento.codigo");
 
                           while (listado.next()) {
                             out.println("<tr><td>");
