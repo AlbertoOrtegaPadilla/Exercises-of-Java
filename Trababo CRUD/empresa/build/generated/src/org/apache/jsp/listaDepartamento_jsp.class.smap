@@ -1,0 +1,20 @@
+SMAP
+listaDepartamento_jsp.java
+JSP
+*S JSP
+*F
++ 0 listaDepartamento.jsp
+listaDepartamento.jsp
+*L
+1,23:48
+24,6:72
+29,16:78
+45,12:95
+56,6:107
+62,2:113,3
+64,10:119
+74:129,3
+75,6:132
+81,4:139
+84,16:143
+*E
